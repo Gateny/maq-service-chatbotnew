@@ -156,10 +156,7 @@ async function processMessage(sock, chatId, messageBody, userName) {
                 await sock.sendMessage(chatId, { text: `Certo. Sua mensagem será encaminhada para o proprietário. Por favor, aguarde que ele responderá assim que possível aqui mesmo.` });
                 break;
 
-            default: // Resposta padrão para opções inválidas fora de um fluxo
-                await delay(1000);
-                await sock.sendMessage(chatId, { text: `Desculpe, não entendi. Por favor, digite o *número* da opção desejada ou *Menu* para voltar ao menu principal.` });
-                break;
+
         }
     }
 }
