@@ -125,7 +125,7 @@ function initializeWhatsAppClient(sessionStore) {
                 '--window-size=1280,720', // Define um tamanho fixo da janela
                 '--lang=en-US' // Define o idioma
             ],
-            executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium-browser', // Caminho do Chromium no Render
+          
         }
     });
 
