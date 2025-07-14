@@ -21,7 +21,27 @@ mongoose.connect(MONGODB_URI)
 // Importa apenas o Client, pois não usaremos botões ou listas
 const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
-const client = new Client();
+const client = new Client({
+    authStrategy: store ? new RemoteAuth({ store: store }) : null,
+    puppeteer: {
+        // args: ['--no-sandbox', '--disable-setuid-sandbox'], // Remova ou comente esta linha
+        args: [ // Use ESTES args, eles são mais agressivos na economia de recursos
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage', // Importante para ambientes de contêineres/nuvem
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process', // Pode causar instabilidade, mas economiza RAM
+            '--disable-gpu',
+            '--disable-setuid-sandbox',
+            '--disable-infobars',
+            '--window-size=1280,720', // Definir um tamanho fixo da janela
+            '--lang=en-US' // Definir idioma
+        ],
+        executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium-browser', // Mantenha esta linha
+    }
+});
 
 // Objeto para armazenar o estado da conversa de cada usuário (esta lógica permanece)
 const userState = {};
