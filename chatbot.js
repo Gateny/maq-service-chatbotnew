@@ -56,7 +56,7 @@ if (!MONGODB_URI) {
             // Cria a instância do store personalizado para o RemoteAuth
             currentStore = {
                 session: null, // Variável interna para armazenar os dados da sessão
-
+                backupSyncIntervalMs: 60000
                 // Método load(): Carrega a sessão do MongoDB
                 async load() {
                     console.log('Tentando carregar sessão do MongoDB...');
