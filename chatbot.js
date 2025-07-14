@@ -2,6 +2,7 @@
 const http = require('http'); // Para criar o servidor HTTP para o Render
 const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require('@whiskeysockets/baileys');
 const pino = require('pino'); // Para logs do Baileys
+const qrcode = require('qrcode-terminal')
 
 // --- VARIÁVEIS GLOBAIS ---
 // Objeto para armazenar o estado da conversa de cada usuário
@@ -45,11 +46,11 @@ async function startBot() {
         const { connection, lastDisconnect, qr } = update;
 
         if (qr) {
-            // Se um QR code for gerado, imprima-o (precisará escanear no primeiro uso)
-            console.log('QR Code para Baileys gerado. Escaneie-o para continuar:');
-            qrcode.generate(qr, { small: true }); // Baileys já imprime se printQRInTerminal for true
-            // Ou você pode usar qrcode-terminal aqui se quiser um visual específico
-        }
+    // Se um QR code for gerado, imprima-o (precisará escanear no primeiro uso)
+    console.log('QR Code para Baileys gerado. Escaneie-o para continuar:');
+    // qrcode.generate(qr, { small: true }); // Baileys já imprime se printQRInTerminal for true
+    // Ou você pode usar qrcode-terminal aqui se quiser um visual específico
+}
 
         if (connection === 'close') {
             const shouldReconnect = (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut);
