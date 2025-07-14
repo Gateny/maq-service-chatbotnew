@@ -34,7 +34,6 @@ async function startBot() {
     // Cria a instância do socket do Baileys
     const sock = makeWASocket({
         logger: pino({ level: 'silent' }), // Nível de log do Baileys (silent para menos logs)
-        printQRInTerminal: true, // Imprime o QR Code no terminal
         auth: state, // Estado da autenticação
         browser: ['Chatbot MAQ SERVICE', 'Chrome', '10.0'], // Informações do navegador (customizável)
     });
@@ -48,7 +47,7 @@ async function startBot() {
         if (qr) {
             // Se um QR code for gerado, imprima-o (precisará escanear no primeiro uso)
             console.log('QR Code para Baileys gerado. Escaneie-o para continuar:');
-            // qrcode.generate(qr, { small: true }); // Baileys já imprime se printQRInTerminal for true
+            qrcode.generate(qr, { small: true }); // Baileys já imprime se printQRInTerminal for true
             // Ou você pode usar qrcode-terminal aqui se quiser um visual específico
         }
 
