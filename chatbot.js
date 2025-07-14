@@ -131,7 +131,7 @@ async function processMessage(sock, chatId, messageBody, userName) {
     // --- FLUXO PRINCIPAL E MENU ---
 
     // Gatilho para iniciar a conversa (se não estiver em um fluxo)
-    if (messageBody.match(/^(oi|ola|olá|bom dia|boa tarde|boa noite|tenho interesse no serviço da maq service\.?)$/i) && !userState[chatId]) {
+    if (messageBody.match(/^(tenho interesse no serviço da maq service.)$/i) && !userState[chatId]) {
         await delay(1500);
         await sendMainMenu(sock, chatId, userName);
         return;
