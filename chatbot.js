@@ -14,6 +14,7 @@ server.listen(PORT, () => {
 });
 
 // O restante do seu código do bot (client.initialize(), client.on('qr'), etc.) vem depois disso
+const mongoose = require('mongoose');
 const MONGODB_URI = process.env.MONGODB_URI;
 // ...
 mongoose.connect(MONGODB_URI)
