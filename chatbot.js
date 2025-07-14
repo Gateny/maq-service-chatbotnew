@@ -14,6 +14,9 @@ server.listen(PORT, () => {
 });
 
 // O restante do seu código do bot (client.initialize(), client.on('qr'), etc.) vem depois disso
+const MONGODB_URI = process.env.MONGODB_URI;
+// ...
+mongoose.connect(MONGODB_URI)
 // Importa apenas o Client, pois não usaremos botões ou listas
 const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
