@@ -1,3 +1,19 @@
+const http = require('http'); // Importa o módulo HTTP do Node.js
+
+const PORT = process.env.PORT || 3000; // Define a porta, usando a variável de ambiente do Render ou 3000 como padrão
+
+// Cria um servidor HTTP básico
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Chatbot is running!\n'); // Mensagem simples para quando alguém acessar a URL do seu bot
+});
+
+// Faz o servidor escutar na porta definida
+server.listen(PORT, () => {
+    console.log(`HTTP server listening on port ${PORT}`);
+});
+
+// O restante do seu código do bot (client.initialize(), client.on('qr'), etc.) vem depois disso
 // Importa apenas o Client, pois não usaremos botões ou listas
 const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
